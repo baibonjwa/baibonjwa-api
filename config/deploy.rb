@@ -2,6 +2,7 @@ require 'mina/rails'
 require 'mina/git'
 # require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 require 'mina/rvm'    # for rvm support. (https://rvm.io)
+require 'mina/puma'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -25,7 +26,11 @@ set :user, 'happybai'          # Username in the server to SSH to.
 # run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
 # set :shared_dirs, fetch(:shared_dirs, []).push('public/assets')
 # set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key', 'credentials.yml.enc')
+set :shared_files, fetch(:shared_files, []).push(
+  'config/database.yml',
+  'config/master.key',
+  'config/credentials.yml.enc',
+  'config/puma.br')
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -60,10 +65,10 @@ task :deploy do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
     on :launch do
+      invoke :'puma:phased_restart'
       in_path(fetch(:current_path)) do
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
