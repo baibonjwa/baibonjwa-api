@@ -1,0 +1,2 @@
+class WebglExample < ApplicationRecord
+end
