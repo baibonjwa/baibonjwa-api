@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.find_or_create_by_name_and_email(
-  name: 'Test',
-  email: 'test@test.com',
-)
-
-User.find_or_create_by_name_and_email(
-  name: 'Test2',
-  email: 'test2@test.com',
-)
+if User.count == 0
+  User.create([{
+    name: 'Test',
+    email: 'test@test.com',
+  }, {
+    name: 'Test2',
+    email: 'test2@test.com',
+  }])
+end
 
 if WebglExample.count == 0
   WebglExample.create([{
