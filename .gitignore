@@ -27,4 +27,4 @@
 /config/master.key
 
 /config/puma.rb
-/config/database.yml
+/config/database.yml.production

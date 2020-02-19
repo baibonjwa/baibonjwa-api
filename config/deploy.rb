@@ -55,7 +55,7 @@ task :deploy do
   # invoke :'git:ensure_pushed'
 
   run(:local) do
-    command "scp config/database.yml #{fetch(:user)}@#{fetch(:domain)}:#{fetch(:shared_path)}/config/database.yml"
+    command "scp config/database.yml.production #{fetch(:user)}@#{fetch(:domain)}:#{fetch(:shared_path)}/config/database.yml"
   end
 
   deploy do
