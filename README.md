@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Start the project
 
-Things you may want to cover:
+```shell
+  rails s
+```
 
-* Ruby version
+* Start the console
 
-* System dependencies
+```shell
+  rails c
+```
 
-* Configuration
+* Generate GraphQL object
 
-* Database creation
+```console
+rails g graphql:object Post title:String
+```
 
-* Database initialization
+* Create Database
 
-* How to run the test suite
+```
+  rails db:create
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Migrate Database
 
-* Deployment instructions
-
-* ...
+```
+  rails db:migrate
+```
