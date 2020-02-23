@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/BAI-Bonjwa/baibonjwa.svg?branch=master)](https://travis-ci.com/BAI-Bonjwa/baibonjwa)
+
 # README
 
 * Start the project
