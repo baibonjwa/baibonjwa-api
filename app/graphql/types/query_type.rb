@@ -51,7 +51,7 @@ module Types
         puts "Got #{x}"
         if x.match(/.md/)
           content = File.readlines("#{base_url}/#{x}")
-          ctime = File.ctime("#{base_url}/#{x}")
+          ctime = DateTime.parse(x.split('-')[0]).to_date
 
           title = content[0].gsub("\n",'')
           if title.match(/<h[0-9]>/)
@@ -66,7 +66,11 @@ module Types
             content: content.join,
             created_at: ctime,
           })
-          puts content
+          results = results.sort do |a1,a2|
+             # a2[:created_at] <=> a1[:created_at]
+             puts a1[:created_at], a2[:created_at]
+             a2[:created_at] <=> a1[:created_at]
+          end
         end
       end
       results
