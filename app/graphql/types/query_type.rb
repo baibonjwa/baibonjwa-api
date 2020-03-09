@@ -46,7 +46,7 @@ module Types
 
     def articles(last: )
       results = []
-      base_url = ENV["ARTICLE_PATH"]
+      base_url = ENV["ARTICLES_PATH"]
       Dir.each_child(base_url) do |x|
         puts "Got #{x}"
         if x.match(/.md/)

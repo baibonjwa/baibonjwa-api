@@ -27,10 +27,12 @@ set :user, 'happybai'          # Username in the server to SSH to.
 # set :shared_dirs, fetch(:shared_dirs, []).push('public/assets')
 # set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/master.key')
 set :shared_files, fetch(:shared_files, []).push(
+  '.env',
   'config/database.yml',
   'config/master.key',
   'config/credentials.yml.enc',
-  'config/puma.br')
+  'config/puma.br'
+)
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
