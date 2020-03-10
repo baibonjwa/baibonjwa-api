@@ -3,11 +3,7 @@
 one:
   name: MyString
   description: MyString
-  vertex_shader: MyString
-  fragment_shader: MyString
 
 two:
   name: MyString
   description: MyString
-  vertex_shader: MyString
-  fragment_shader: MyString
