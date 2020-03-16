@@ -51,7 +51,7 @@ module Types
         puts "Got #{x}"
         if x.match(/.md/)
           content = File.readlines("#{base_url}/#{x}")
-          ctime = DateTime.parse(x.split('-')[0]).to_date
+          ctime = DateTime.parse(x.split('-')[0]).to_datetime
 
           title = content[0].gsub("\n",'')
           if title.match(/<h[0-9]>/)
