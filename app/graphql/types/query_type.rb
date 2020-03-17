@@ -59,11 +59,18 @@ module Types
           end
           if title.match(/\#{1,}\s/)
             title = title[/\#{1,}\s(.*)/, 1]
+            # remove escape character
+            title = title.gsub(/\\/, "")
           end
 
           results.push({
             title: title,
             content: content.join,
+            summary: content[1..-1].join
+              .gsub(/\\/, "")
+              .gsub(/\#{1,}\s/, "")
+              .gsub(/\n{1,}/, "")
+              .first(300) + '...',
             created_at: ctime,
           })
           results = results.sort do |a1,a2|
